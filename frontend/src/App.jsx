@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SocialMediaInput from "./Components/socialMediaInput";
 
 function App() {
+
   const [socialMedia, setSocialMedia] = useState('');
 
   const handleSocialMediaChange = (e) => {
@@ -13,6 +14,7 @@ function App() {
     color: 'green',
     textAlign: 'center',
   };
+
 
   return (
     
