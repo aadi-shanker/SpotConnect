@@ -11,7 +11,7 @@ there are many ways to get your application up and running.
 With App.jsx, we can also define global variables and routes to store information as well as page navigation.
 */
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10);
 
   return (
     <>
