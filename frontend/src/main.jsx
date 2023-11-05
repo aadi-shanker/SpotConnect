@@ -26,6 +26,7 @@ const router = createBrowserRouter([
     path: "/swipe",
     element: <Swipingpage/>
   },
+  {
     path: "/handle",
     element: <HandlOutput/>
   }

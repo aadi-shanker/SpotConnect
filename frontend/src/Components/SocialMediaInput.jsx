@@ -22,7 +22,7 @@ function SocialMediaInput() {
     let navigate = useNavigate();
 
     function handleClick() {
-        navigate("/handle");
+        navigate("/swipe");
     }
 
 
