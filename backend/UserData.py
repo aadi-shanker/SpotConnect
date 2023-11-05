@@ -50,7 +50,7 @@ def find_all_listening_data(access_token: str) -> dict:
     return result
 
 
-def store_user_data(database: DatabaseHandler, access_token):
+def store_user_data(database: DatabaseHandler, access_token: str, handle: str):
     """Given a user's spotify access token, retrieves the user's data from
     Spotify API and stores data in database"""
     #check if user already exists
@@ -67,7 +67,7 @@ def store_user_data(database: DatabaseHandler, access_token):
     user_data_db = database.get_data("name",user_spotify_name)
     print(user_data_db)
     if(user_data_db!=None):
-        data = {"_id": user_data_db["_id"], "name": user_spotify_name,
+        data = {"_id": user_data_db["_id"], "name": user_spotify_name, "handle":handle,
                 "top_tracks": listening_data["top_30_tracks"],
                 "top_artists": listening_data["top_artists"],
                 "top_genres": listening_data["top_genres"],
@@ -77,7 +77,7 @@ def store_user_data(database: DatabaseHandler, access_token):
     #user doesn't exist, create new user and insert their data
     else:
         data = {"_id": (database.get_max_id())+1, "name": user_spotify_name,
-                  "top_tracks": listening_data["top_30_tracks"],
+                  "top_tracks": listening_data["top_30_tracks"], "handle:": handle,
                       "top_artists":listening_data["top_artists"],
                     "top_genres": listening_data["top_genres"],
                     "top_tracks": listening_data["top_tracks"],

@@ -61,7 +61,7 @@ def main(access_token):
     users_database = DatabaseHandler("Users")
 
     #store/update user's data
-    UserData.store_user_data(users_database, access_token)
+    UserData.store_user_data(users_database, access_token, "@zothacks")
     users_id = UserData.user_id(users_database, access_token)
 
     person1 = users_database.get_data("_id", users_id)
@@ -95,6 +95,6 @@ if __name__ == "__main__":
     #print(person1)
     #print(type(person1))
 
-    UserData.store_user_data(users_database,temp_access_token)
+    UserData.store_user_data(users_database,temp_access_token,"@zothacks")
 
     main(temp_access_token2)
