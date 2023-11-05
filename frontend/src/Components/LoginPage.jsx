@@ -17,7 +17,7 @@ function LoginPage() {
     const [token, setToken] = useState("")
 
     function redirectToSpotify() {
-        window.open(SPOTIFY_AUTH)
+        window.open(SPOTIFY_AUTH, "_self")
     }
 
     useEffect(() => {

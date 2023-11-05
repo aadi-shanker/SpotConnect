@@ -11,6 +11,7 @@ import LoginPage from "./Components/LoginPage.jsx";
 import SocialMediaInput from "./Components/SocialMediaInput.jsx";
 import Swipingpage from "./Components/Swipingpage.jsx";
 import HandlOutput from "./Components/HandleOutput.jsx";
+import HandleOutput from "./Components/HandleOutput.jsx";
 
 
 const router = createBrowserRouter([
