@@ -21,4 +21,4 @@ class DatabaseHandler:
         raise NotImplemented
 
     def get_max_id(self) -> int:
-        return db[self.database].find_one(sort = [("_id", pymongo.DESCENDING)])
+        return db[self.database].find_one(sort = [("_id", pymongo.DESCENDING)])['_id']
