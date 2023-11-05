@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import LoginPage from "./Components/LoginPage.jsx";
 import SocialMediaInput from "./Components/SocialMediaInput.jsx"
+import Swipingpage from "./Components/Swipingpage.jsx"
 import HandlOutput from "./Components/HandlOutput.jsx";
 
 
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
     element: <SocialMediaInput/>
   },
   {
+    path: "/swipe",
+    element: <Swipingpage/>
+  },
     path: "/handle",
     element: <HandlOutput/>
   }
