@@ -1,8 +1,8 @@
 import React from 'react';
-import SocialMediaInput from "./socialMediaInput";
+import SocialMediaInput from "./SocialMediaInput";
  // Replace with the actual image file path
 
-function HandlOutput() {
+function HandleOutput() {
   return (
     <div>
       <h1>You matched with @</h1>
@@ -11,4 +11,4 @@ function HandlOutput() {
   );
 }
 
-export default HandlOutput;
+export default HandleOutput;

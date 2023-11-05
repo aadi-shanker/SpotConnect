@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .socialMediaInputPage{
     display: flex;
     justify-content: center;
@@ -11,3 +12,45 @@
     width: 100vw;
 }
 
+.centerpiece {
+    background-color: black;
+    width: 732px;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+}
+
+.zotify-logo {
+    width: 200px
+}
+
+.rounded-text-box {
+    width: 300px;
+    height: 20px;
+    padding: 10px;
+    background-color: #121212;
+    border-radius: 3px; /* Adjust the value to control the roundness */
+    border: 1px solid #727272;
+    overflow: hidden; /* Clip overflowing content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
+}
+
+.close-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button:hover {
+    transform: scale(1.02); /* Increase the size on hover */
+    filter: brightness(1.1); /* Add a white glow by increasing brightness */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.login-button:not(:hover) {
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
