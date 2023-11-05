@@ -1,4 +1,8 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import "./LoginPage.css";
+import Zotify from "../assets/Zotify.svg";
+import Crossbar from "../assets/crossbar.png"
+import ConnectButton from "../assets/ConnectButton.svg";
 
 
 function LoginPage() {
@@ -11,7 +15,7 @@ function LoginPage() {
 
     const [token, setToken] = useState("")
 
-    function redirectToSpotify(){
+    function redirectToSpotify() {
         window.open(SPOTIFY_AUTH)
     }
 
@@ -36,9 +40,14 @@ function LoginPage() {
     }
 
     return (
-        <button onClick={redirectToSpotify} className="Button">Login with Spotify</button>
+        <div className="centerpiece">
+            <img className="zotify-logo" alt="Zotify Logo" src={Zotify} />
+            <img className="cross-bar" src={Crossbar} />
+            <img className="connect-button" onClick={redirectToSpotify} alt="Connect Button" src={ConnectButton} />
+        </div>
 
-  );
+
+    );
 }
 
 

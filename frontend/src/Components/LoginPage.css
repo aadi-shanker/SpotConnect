@@ -1,0 +1,25 @@
+.centerpiece {
+    background-color: black;
+    width: 740px;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+}
+
+.zotify-logo {
+    width: 200px
+}
+
+.connect-button:hover {
+    transform: scale(1.02); /* Increase the size on hover */
+    filter: brightness(1.1); /* Add a white glow by increasing brightness */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.connect-button:not(:hover) {
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
