@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import LoginPage from "./Components/LoginPage.jsx";
 import SocialMediaInput from "./Components/SocialMediaInput.jsx"
+import Swipingpage from "./Components/Swipingpage.jsx"
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
   {
     path: "/social",
     element: <SocialMediaInput/>
-  }
+  },
+  {
+    path: "/swipe",
+    element: <Swipingpage/>
+  },
 ])
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
