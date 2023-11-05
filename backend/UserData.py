@@ -65,7 +65,7 @@ def store_user_data(database: DatabaseHandler, access_token: str, handle: str):
     listening_data = find_all_listening_data(access_token)
     #user exists
     user_data_db = database.get_data("name",user_spotify_name)
-    print(user_data_db)
+    #print(user_data_db)
     if(user_data_db!=None):
         data = {"_id": user_data_db["_id"], "name": user_spotify_name, "handle":handle,
                 "top_tracks": listening_data["top_30_tracks"],
@@ -122,14 +122,14 @@ def calculate_match(person1: dict, person2: dict) -> bool:
     gen = 0.3 * len(set(gen2) & set(gen2))
 
     #song preferences
-    song1 = person1["top_songs"]
-    song2 = person2["top_songs"]
+    song1 = person1["top_tracks"]
+    song2 = person2["top_tracks"]
     song = 0.2 * 0.5 * len(set(song1) & set(song2))
 
     #album preferences
     alb1 = person1["top_albums"]
     alb2 = person2["top_albums"]
-    alb = 0.1 * len(set(alb1) & alb2(2))
+    alb = 0.1 * len(set(alb1) & set(alb2))
 
     #calculate score
     return (art + gen + song + alb)>=1
