@@ -10,3 +10,52 @@
     height: 100vh;
     width: 100vw;
 }
+
+.center-block {
+    width: 733px;
+    height: 576px;
+    padding: 0;
+    background-color: black;
+    border-radius: 10px; /* Adjust the value to control the roundness */
+    border: 1px solid #727272;
+    white-space: nowrap; /* Prevent text from wrapping */
+    display: flex;
+    flex-direction: column;
+}
+
+.row-space {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 25px;
+}
+.red-arrow {
+    width: 10%;
+}
+
+.green-arrow {
+    margin-left: auto;
+    width: 10%;
+}
+
+.red-arrow:hover {
+    transform: scale(1.02); /* Increase the size on hover */
+    filter: brightness(1.1); /* Add a white glow by increasing brightness */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.red-arrow:not(:hover) {
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.green-arrow:hover {
+    transform: scale(1.02); /* Increase the size on hover */
+    filter: brightness(1.1); /* Add a white glow by increasing brightness */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.green-arrow:not(:hover) {
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
