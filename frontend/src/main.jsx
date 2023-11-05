@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import LoginPage from "./Components/LoginPage.jsx";
 import SocialMediaInput from "./Components/SocialMediaInput.jsx"
+import HandlOutput from "./Components/HandlOutput.jsx";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/social",
     element: <SocialMediaInput/>
+  },
+  {
+    path: "/handle",
+    element: <HandlOutput/>
   }
 ])
 ReactDOM.createRoot(document.getElementById("root")).render(
