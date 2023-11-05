@@ -68,21 +68,20 @@ def store_user_data(database: DatabaseHandler, access_token):
     print(user_data_db)
     if(user_data_db!=None):
         data = {"_id": user_data_db["_id"], "name": user_spotify_name,
-                "date of birth": "23/01/2001",
-                "top 30 tracks": listening_data["top_30_tracks"],
-                "top 5 artists": listening_data["top_artists"],
-                "top 5 genres": listening_data["top_genres"],
-                "top 10 tracks": listening_data["top_tracks"],
-                "top 5 albums": listening_data["top_albums"]}
+                "top_tracks": listening_data["top_30_tracks"],
+                "top_artists": listening_data["top_artists"],
+                "top_genres": listening_data["top_genres"],
+                "top_tracks": listening_data["top_tracks"],
+                "top_albums": listening_data["top_albums"]}
 
     #user doesn't exist, create new user and insert their data
     else:
-        data = {"_id": (database.get_max_id())+1, "name": user_spotify_name, "date of birth": "23/01/2001",
-                  "top 30 tracks": listening_data["top_30_tracks"],
-                      "top 5 artists":listening_data["top_artists"],
-                    "top 5 genres": listening_data["top_genres"],
-                    "top 10 tracks": listening_data["top_tracks"],
-                      "top 5 albums":listening_data["top_albums"]}
+        data = {"_id": (database.get_max_id())+1, "name": user_spotify_name,
+                  "top_tracks": listening_data["top_30_tracks"],
+                      "top_artists":listening_data["top_artists"],
+                    "top_genres": listening_data["top_genres"],
+                    "top_tracks": listening_data["top_tracks"],
+                      "top_albums":listening_data["top_albums"]}
 
         database.insert_data(data)
 
@@ -97,7 +96,7 @@ def get_random_person(users_database: DatabaseHandler, users_id: int) -> dict:
     # retrieve that person2 data and store as dict
     return users_database.get_data("_id", randomID)
 
-def user_id(database:DatabaseHandler, access_token: str):
+def user_id(database: DatabaseHandler, access_token: str):
     """Return's the user with the access token's id number"""
     url = 'https://api.spotify.com/v1/me'
     headers = {"Authorization": f"Bearer {access_token}"}
@@ -113,31 +112,24 @@ def calculate_match(person1: dict, person2: dict) -> bool:
     """Given two users, calculate their compatibility and return true
     false"""
     #artist compatability
-    art1 = person1["top 5 artists"]
-    art2 = person2["top 5 artists"]
+    art1 = person1["top_artists"]
+    art2 = person2["top_artists"]
     art  = 0.4 * len(set(art1) & set(art2))
 
     #genre compatability
-    gen1 = person1["top 5 genres"]
-    gen2 = person2["top 5 genres"]
+    gen1 = person1["top_genres"]
+    gen2 = person2["top_genres"]
     gen = 0.3 * len(set(gen2) & set(gen2))
 
     #song preferences
-    song1 = person1["top 10 songs"]
-    song2 = person2["top 10 songs"]
+    song1 = person1["top_songs"]
+    song2 = person2["top_songs"]
     song = 0.2 * 0.5 * len(set(song1) & set(song2))
 
     #album preferences
-    alb1 = person1["top 5 albums"]
-    alb2 = person2["top 5 albums"]
+    alb1 = person1["top_albums"]
+    alb2 = person2["top_albums"]
     alb = 0.1 * len(set(alb1) & alb2(2))
 
     #calculate score
-    score = art + gen + song + alb
-
-    returnValue = False
-
-    if score >= 1:
-        returnValue = True
-
-    return returnValue
+    return (art + gen + song + alb)>=1

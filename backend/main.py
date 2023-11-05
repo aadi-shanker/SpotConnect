@@ -66,6 +66,8 @@ def main(access_token):
 
     person1 = users_database.get_data("_id", users_id)
     person2 = UserData.get_random_person(users_database,users_id)
+    print(f"person1: {person1}")
+    print(f"person2: {person2}")
 
     #process both users top 50 tracks and calculate if they are a match
     while not UserData.calculate_match(person1, person2):
@@ -83,8 +85,8 @@ def main(access_token):
 if __name__ == "__main__":
     #uvicorn.run("main:app", port=5000, reload=True)
 
-    temp_access_token = 'BQDkm22-8ng3ilRIb_IplHw-FCuLshouylXjnswLnr1Ewlv2rS5knsWdqhLUxTdFXnYU9vNjhS743fR0ahxJd1jBZlSFNSyheDSpHt6H83b5iuArat4rSKuxqM2ivbS2pNvvNzpkbQIZFssLeOJLNbd46G9UEEHfaHmDMeYisdorTuuBmum2VL4Lr0dAcD39ucTPdGN4xlLCJEpqlwITATUZ'
-
+    temp_access_token = 'BQCID2ELCj-SGYZ_QGajat_efic7N87YVi06ohTlV3nfJfxEXqDZEBW7V7ryGJ6Umh6e6ruqcW037sXg8r6DJc3-ng31_lpJL4tvx2lDnvgTxZWLrzRLncMERFxORwl9Ckvv4-fE69XES3p8OO4ewdX-TEGJ9lajhJ-MhMBYCTmHzLZFExcFtHpUnDdrSFUfFNxllFrNTHxzhnx5wetjkGE7'""
+    temp_access_token2 = 'BQCa5z3vbNe0rmF_cOR3szbbf3MRHf3U21Q6LmH3zDeeX70TgVfmx0y8fmOQ2UjtIg5cVQLSofgQSk13pHYR5u_ugDeFS5ZFQTlTj76rPKxUQH-pALMHAw7V2qJapMpDfkh-puvYixF0a-6I_1wkG7RTd7m5sm39ezZzhLLpZB72tLSqM4HdQoqP02ITT9znyQ'
     users_database = DatabaseHandler("Users")
 
     #users_database.insert_data(sampleData)
@@ -95,9 +97,4 @@ if __name__ == "__main__":
 
     UserData.store_user_data(users_database,temp_access_token)
 
-    # tempdict = UserData.find_all_listening_data(temp_access_token)
-    # print(tempdict["top_tracks"])
-    # for x in tempdict.items():
-    #     print(x)
-    #
-    #
+    main(temp_access_token2)
