@@ -58,11 +58,14 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 
 @app.get("/main")
-def main(user_token):
+def main(access_token):
     users_database = DatabaseHandler("Users")
 
-    #store user's data
-    UserData.store_user_data(users_database, user_token)
+    #store/update user's data
+    UserData.store_user_data(users_database, access_token)
+
+    #retrieve person1 data
+    person1 = users_database.get_data("_id", )
 
     #select a random user
     #get max id
@@ -73,9 +76,6 @@ def main(user_token):
 
     #retrieve that person2 data and store as dict
     person2 = users_database.get_data("_id", randomID)
-
-    #retrieve person1 data
-    person1 = users_database.get_data("_id", )
 
     #process both users top 50 tracks and calculate if they are a match
     UserData.calculate_match(person1, person2)
@@ -90,14 +90,18 @@ def main(user_token):
 if __name__ == "__main__":
     #uvicorn.run("main:app", port=5000, reload=True)
 
-    users_database = DatabaseHandler("Users")
-    sampleData = {"_id": 0, "name": "Bob Smith", "date of birth": "23/01/2001",
-                  "top 30 tracks": [], "top 5 artists":[], "top 5 genres":[],
-                  "top 10 songs": [], "top 5 albums":[]}
+    temp_access_token = 'BQCVQNtanDouNIVEBU6RkQTITR_BlcYe5hu5EPup4mfPZ2LMlUgFlWWuem-xyhBeX-7mvaxHII8rVAU9i0GfrQxU9jTPD2v2v0SOOLdGUMi93h3P0Xngh8kNn1mx9EU2EsEhnZQBGkGuRTgjQ7ziXeSetKnxjzXCXJQeOQWKo6ljCtD5mFZMsBIZPNrJnho_M0c'
 
-    users_database.insert_data(sampleData)
-    person1 = users_database.get_data("name","Bob Smith")
-    print(type(person1))
-    print(person1)
+    users_database = DatabaseHandler("Users")
+    #sampleData = {"_id": 0, "name": "Bob Smith", "spotify_name": "Han Seo", "date of birth": "23/01/2001"
+    #              "top 30 tracks": [], "top 5 artists":[], "top 5 genres":[],
+    #              "top 10 songs": [], "top 5 albums":[]}
+
+    #users_database.insert_data(sampleData)
+
+    #person1 = users_database.get_data("name","Bob Smith")
+    #print(person1)
+    #print(type(person1))
+    UserData.find_all_listening_data(temp_access_token)
 
 

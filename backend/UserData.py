@@ -1,24 +1,89 @@
 import DatabaseHandler
+import requests
 
-def store_user_data(database: DatabaseHandler, user_token):
+TOP_X_TRACKS = 5
+TOP_X_GENRES = 5
+TOP_X_ARTISTS = 5
+TOP_X_ALBUMS = 5
+def find_all_listening_data(access_token: str) -> dict:
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    url = 'https://api.spotify.com/v1/me/top/tracks?limit=30'
+
+    response = (requests.get(url, headers = headers)).json()
+    result = dict()
+
+    top_30_tracks = list()
+    top_tracks = list()
+    top_artists = list()
+    top_genres = list()
+    top_albums = list()
+
+    for x in response['items']:
+        print(x)
+
+    # iteration_number = 0
+    # for x in response['items']:
+    #     print(x)
+    #     for k in x:
+    #         print(k)
+    #     if(iteration_number<TOP_X_TRACKS):
+    #         top_tracks.append(x['name'])
+    #     if (iteration_number < TOP_X_GENRES):
+    #         top_tracks.append(x['genres'])
+    #     if (iteration_number < TOP_X_ALBUMS):
+    #         top_tracks.append(x['name'])
+    #     ++iteration_number
+    #     top_30_tracks.append(x['name'])
+    #     print(x['type'])
+
+    #print(top30)
+    return result
+
+
+def store_user_data(database: DatabaseHandler, access_token):
     """Given a user's spotify token, retrieves the user's data from
     Spotify API and stores data in database"""
     #check if user already exists
+    headers = {"Authorization": f"Bearer {access_token}"}
 
-    #if user doesn't exist, create new user and insert their data
+    url = 'https://api.spotify.com/v1/me'
 
+    response = requests.get(url, headers = headers)
+    user_data = response.json()
+    user_spotify_name = user_data['display_name']
+
+    #user exists
+    if(database.get_data("spotify_name",user_spotify_name)==None):
+        pass
+    #user doesn't exist, create new user and insert their data
+    else:
+        sampleData = {"_id": 0, "name": "Bob Smith", "spotify_name": "Han Seo", "date of birth": "23/01/2001",
+                  "top 30 tracks": [], "top 5 artists":[], "top 5 genres":[],
+                  "top 10 tracks": [], "top 5 albums":[]}
+
+        database.insert_data(sampleData)
 
     #store user's name, dob, social media handle, top 30 tracks, top 5 artists, top 5 genres,
     #top 10 songs, top 5 albums
 
 
-    raise NotImplemented
 
-
-def retrieve_top_30_tracks(user_token):
+def retrieve_top_30_tracks(access_token) -> list[str]:
     """Given a user's token, retrieves user's top 30 tracks from
     Spotify API"""
-    raise NotImplemented
+
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    url = 'https://api.spotify.com/v1/me/top/tracks?limit=30'
+
+    response = requests.get(url, headers = headers)
+    top30tracks = response.json()
+    result = list()
+    for x in top30tracks['items']:
+        result.append(x['name'])
+
+    return result
 
 def calculate_match(person1: dict, person2: dict) -> bool:
     """Given two persons, uses their data to calculate compatibility"""
