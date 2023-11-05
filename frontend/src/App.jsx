@@ -3,7 +3,7 @@ import "./App.css";
 import Zotify from "./assets/Zotify.svg";
 import {Route, Router} from "react-router-dom"
 import LoginPage from "./Components/LoginPage";
-import HandlOutput from "./Components/HandlOutput";
+import HandlOutput from "./Components/HandleOutput";
 
 
 function App() {

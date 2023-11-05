@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import './SocialMediaInput.css'
+import Zotify from "../assets/Zotify.svg";
+import Crossbar from "../assets/crossbar.png"
+import SocialHandle from "../assets/SocialHandle.png"
+import LoginButton from "../assets/LoginButton.svg"
 
 function SocialMediaInput() {
     const [socialMedia, setSocialMedia] = useState('');
@@ -27,20 +31,19 @@ function SocialMediaInput() {
 
 
     return (
-        <div className='socialMediaInputPage'>
-            <div className="socialMediaInputContainer">
-                <label htmlFor="socialMediaInput" style={textStyle}>Enter your social media and specify what it is (Ex: @hackatuci - Instagram):</label>
-                <input
+        <div className='centerpiece'>
+                <img className="zotify-logo" alt="Zotify Logo" src={Zotify} />
+                <img className="cross-bar" src={Crossbar} />
+                <div className="close-stack">
+                    <img src={SocialHandle} />
+                    <input
                     type="text"
-                    id="socialMediaInput"
+                    className="rounded-text-box"
                     value={socialMedia}
                     onChange={handleSocialMediaChange}
                 />
-                <p style={textStyle}>You entered: {socialMedia}</p>
-                <button type="Submit" onClick={handleClick}>
-                Submit
-                </button>
-            </div>
+                </div>
+                <img className="login-button" onClick={handleClick} alt="Login Button" src={LoginButton} />
         </div>
     );
 }
